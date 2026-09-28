@@ -2,16 +2,14 @@
 
 import os
 import pandas as pd
+import streamlit as st
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(BASE_DIR, "Restaurant_revenue (1).csv")
 
 df = pd.read_csv(csv_path)
 
-display(df.head())
-
-df = pd.read_csv('/content/Restaurant_revenue (1).csv')
-display(df.head())
+st.dataframe(df.head())
 
 """## 1. Data Preprocessing and Initial Exploration"""
 
@@ -29,7 +27,7 @@ df_processed = pd.get_dummies(df, columns=['Cuisine_Type'], drop_first=True)
 
 # Display the first few rows of the processed DataFrame to see the new columns
 print('DataFrame after one-hot encoding:')
-display(df_processed.head())
+st.dataframe(df_processed.head())
 
 """## 2. Building a Linear Regression Model
 
